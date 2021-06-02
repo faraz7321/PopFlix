@@ -1,17 +1,23 @@
 package com.napps.popflix.adapters;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.napps.popflix.models.DetailActivity;
+import com.napps.popflix.models.Movie;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import java.util.List;
 
-import com.bumptech.glide.Glide;
-import com.napps.popflix.R;
+public class MovieAdapter {
+    List<Movie> movies;
+    String context;
+
+    public MovieAdapter(String context, List<Movie> movies) {
+        this.context = context;
+        this.movies = movies;
+    }
+
+    public class ViewHolder {
+
+
+    }
+}
+
+
