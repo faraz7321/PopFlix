@@ -1,25 +1,30 @@
 package com.napps.popflix;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 
-import com.napps.popflix.adapters.MovieAdapter;
+import com.codepath.asynchttpclient.AsyncHttpClient;
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.napps.popflix.models.Movie;
 import com.rbddevs.splashy.Splashy;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Headers;
 
 public class MainActivity extends AppCompatActivity {
     public static final String PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
     public static final String Activity_TAG = "MainRoutine";
     List<Movie> movies;
 
-    ///@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Setting Dynmaic UI Color
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         View root = someView.getRootView();
         root.setBackgroundColor(getResources().getColor(R.color.UIblack));
         @SuppressLint("CutPasteId") RecyclerView MoviesView = findViewById(R.id.MovieView);
+
 
         // Splash Screen Runtime
         new Splashy(this)
@@ -41,10 +47,25 @@ public class MainActivity extends AppCompatActivity {
                 .setFullScreen(true)
                 .show();
 
+
         movies = new ArrayList<>();
 
-        //Create the adapter.//
-        final MovieAdapter movieAdapter;
-    }
+        // Create the adapter
 
+        MoviesView.setLayoutManager(new LinearLayoutManager(this));
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(PLAYING_URL, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Headers headers, JSON json) {
+
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+
+            }
+        });
     }
+}
