@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Setting Dynmaic UI Color
+        // Setting dynamic UI Color
         setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
         @SuppressLint("CutPasteId") View someView = findViewById(R.id.MovieView);
