@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="UIblack">#2A2A2B</color>
+    <color name="black_500">#262627</color>
+    <color name="black_700">#222223</color>
+    <color name="purple_200">#2A2A2B</color>
+    <color name="purple_700">#222223</color>
+    <color name="teal_200">@color/red</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#A6A3A3</color>
+    <color name="red">#E50914</color>
+</resources>
