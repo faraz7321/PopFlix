@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".models.DetailActivity"
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
+    >
+
+    <TextView
+        android:id="@+id/DetailedMovieTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sampletext"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <RatingBar
+        android:id="@+id/MovieRating"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="10" />
+
+    <TextView
+        android:id="@+id/DetailedMovieOver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/string_overview"
+        android:textColor="#FFFEFE" />
+</LinearLayout>
