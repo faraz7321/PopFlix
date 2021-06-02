@@ -17,6 +17,7 @@ public class Movie {
     public Movie() {
 
     }
+
     public Movie(JSONObject jsonObject) throws JSONException {
         // Parsing JSON Array Approved
         backDropPath = jsonObject.getString("backdrop_path");
@@ -24,14 +25,13 @@ public class Movie {
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
         rating = jsonObject.getDouble("vote_average");
-
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
         List<Movie> movies = new ArrayList<>();
-        /*code*/
-        
-
+        for (int i = 0; i < movieJsonArray.length(); i++) {
+            movies.add(new Movie(movieJsonArray.getJSONObject(i)));
+        }
         return movies;
     }
 
