@@ -23,7 +23,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        // Setting Dynmaic UI Color
+        // Setting Dynamic UI Color
         setContentView(R.layout.activity_detail);
         setContentView(R.layout.activity_detail);
         @SuppressLint("CutPasteId") View someView = findViewById(R.id.linearLayout);
@@ -34,6 +34,7 @@ public class DetailActivity extends AppCompatActivity {
         MovieOverview = findViewById(R.id.DetailedMovieOver);
         MovieRating = findViewById(R.id.MovieRating);
         Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
+        assert movie != null; //Movie may produce null pointer exception.//
         MovieTitle.setText(movie.getTitle());
         MovieOverview.setText(movie.getOverview());
         MovieRating.setRating((float) movie.getRating());
