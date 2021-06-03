@@ -1,24 +1,29 @@
 package com.napps.popflix.models;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.napps.popflix.R;
-
 import org.parceler.Parcels;
 
+/**
+ *
+ * @author Faraz Ahmad
+ */
 public class DetailActivity extends AppCompatActivity {
 
     TextView MovieTitle;
     TextView MovieOverview;
     RatingBar MovieRating;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +31,12 @@ public class DetailActivity extends AppCompatActivity {
         // Setting Dynamic UI Color
         setContentView(R.layout.activity_detail);
         setContentView(R.layout.activity_detail);
-        @SuppressLint("CutPasteId") View someView = findViewById(R.id.linearLayout);
+        @SuppressLint("CutPasteId")
+        View someView = findViewById(R.id.linearLayout);
         View root = someView.getRootView();
         root.setBackgroundColor(getResources().getColor(R.color.UIblack));
-        @SuppressLint("CutPasteId") LinearLayout linearLayout = findViewById(R.id.linearLayout);
+        @SuppressLint("CutPasteId")
+        LinearLayout linearLayout = findViewById(R.id.linearLayout);
         MovieTitle = findViewById(R.id.DetailedMovieTitle);
         MovieOverview = findViewById(R.id.DetailedMovieOver);
         MovieRating = findViewById(R.id.MovieRating);

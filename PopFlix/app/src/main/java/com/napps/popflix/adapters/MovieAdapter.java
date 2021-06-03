@@ -9,29 +9,41 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.napps.popflix.R;
 import com.napps.popflix.models.DetailActivity;
 import com.napps.popflix.models.Movie;
-
+import java.util.List;
 import org.parceler.Parcels;
 
-import java.util.List;
-
+/**
+ *
+ * @author Faraz Ahmad
+ */
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
+
     Context context;
     List<Movie> movies;
 
+    /**
+     *
+     * @param context
+     * @param movies
+     */
     public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
         this.movies = movies;
     }
 
     // Inflating Layout
+    /**
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,6 +52,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     // Populating Data
+    /**
+     *
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Get movie position
@@ -49,11 +66,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     // Return Total number of items
+    /**
+     *
+     * @return
+     */
     @Override
     public int getItemCount() {
         return movies.size();
     }
 
+    /**
+     *
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView MovieTitle;
@@ -61,6 +85,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         ImageView MovieAvatar;
         RelativeLayout container;
 
+        /**
+         *
+         * @param itemView
+         */
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             MovieTitle = itemView.findViewById(R.id.MovieTitle);
@@ -69,6 +97,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             container = itemView.findViewById(R.id.container);
         }
 
+        /**
+         *
+         * @param movie
+         */
         public void bind(Movie movie) {
             MovieTitle.setText(movie.getTitle());
             MovieOverview.setText(movie.getOverview());

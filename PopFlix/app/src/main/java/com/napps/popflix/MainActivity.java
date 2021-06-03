@@ -1,45 +1,57 @@
 package com.napps.popflix;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.napps.popflix.adapters.MovieAdapter;
 import com.napps.popflix.models.Movie;
 import com.rbddevs.splashy.Splashy;
-
+import java.util.ArrayList;
+import java.util.List;
+import okhttp3.Headers;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import okhttp3.Headers;
-
+/**
+ *
+ * @author Faraz Ahmad
+ */
 public class MainActivity extends AppCompatActivity {
+
+    /**
+     *
+     */
     public static final String PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+
+    /**
+     *
+     */
     public static final String Activity_TAG = "MainRoutine";
     List<Movie> movies;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Setting Dynamic UI Color
         setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
-        @SuppressLint("CutPasteId") View someView = findViewById(R.id.MovieView);
+        @SuppressLint("CutPasteId")
+        View someView = findViewById(R.id.MovieView);
         View root = someView.getRootView();
         root.setBackgroundColor(getResources().getColor(R.color.UIblack)); // Get color was in API 23 YET TO BE RESOLVED.//
-        @SuppressLint("CutPasteId") RecyclerView MoviesView = findViewById(R.id.MovieView);
-
+        @SuppressLint("CutPasteId")
+        RecyclerView MoviesView = findViewById(R.id.MovieView);
 
         // Splash Screen Runtime
         new Splashy(this)
