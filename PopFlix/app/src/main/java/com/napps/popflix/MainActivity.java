@@ -6,13 +6,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.napps.popflix.adapters.MovieAdapter;
 import com.napps.popflix.models.Movie;
 import com.rbddevs.splashy.Splashy;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Setting dynamic UI Color
+        // Setting Dynamic UI Color
         setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
         @SuppressLint("CutPasteId") View someView = findViewById(R.id.MovieView);
         View root = someView.getRootView();
-        root.setBackgroundColor(getResources().getColor(R.color.UIblack));
+        root.setBackgroundColor(getResources().getColor(R.color.UIblack)); // Get color was in API 23 YET TO BE RESOLVED.//
         @SuppressLint("CutPasteId") RecyclerView MoviesView = findViewById(R.id.MovieView);
 
 
@@ -47,24 +52,41 @@ public class MainActivity extends AppCompatActivity {
                 .setFullScreen(true)
                 .show();
 
-
         movies = new ArrayList<>();
 
         // Create the adapter
-
+        final MovieAdapter movieAdapter = new MovieAdapter(this, movies); 
+        // Set the adapter on the Recycler View
+        MoviesView.setAdapter(movieAdapter);
+        // Set a layout manager on the recycler view
         MoviesView.setLayoutManager(new LinearLayoutManager(this));
 
+        // HTTP Client setup
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(PLAYING_URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
+                // 200 Ok
+                Log.d(Activity_TAG, "[!] Handler OK!");     // Debugger Uses
+                JSONObject jsonObject = json.jsonObject;
+                try {
+                    JSONArray query = jsonObject.getJSONArray("results");
+                    Log.i(Activity_TAG, "[!] Json Query Accepted::" + query.toString());    // Debugger entry
 
+                    movies.addAll(Movie.fromJsonArray(query));
+                    movieAdapter.notifyDataSetChanged();
 
+                    Log.i(Activity_TAG, "[+] Movie::" + movies.toString());                 // Debugger entry
+
+                } catch (JSONException e) {
+                    Log.e(Activity_TAG, "[!] Hit Json Exception!", e);
+                    e.printStackTrace();
+                }
             }
 
             @Override
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-
+                Log.d(Activity_TAG, "[!] Handler error");   // Debugger Uses
             }
         });
     }
