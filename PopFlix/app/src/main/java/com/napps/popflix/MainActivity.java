@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         movies = new ArrayList<>();
 
         // Create the adapter
-        final MovieAdapter movieAdapter = new MovieAdapter(this, movies); 
+        final MovieAdapter movieAdapter = new MovieAdapter(this, movies);
         // Set the adapter on the Recycler View
         MoviesView.setAdapter(movieAdapter);
         // Set a layout manager on the recycler view
