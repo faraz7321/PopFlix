@@ -3,10 +3,12 @@ package com.napps.popflix.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Movie {
     String backDropPath; // Image of the movie poster
     String posterPath; // Image of the movie poster
@@ -15,7 +17,6 @@ public class Movie {
     double rating; // Movie Rating
 
     public Movie() {
-
     }
 
     public Movie(JSONObject jsonObject) throws JSONException {
@@ -25,6 +26,7 @@ public class Movie {
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
         rating = jsonObject.getDouble("vote_average");
+
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
@@ -54,7 +56,4 @@ public class Movie {
     public double getRating() {
         return rating;
     }
-
-
 }
-

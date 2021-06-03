@@ -10,7 +10,7 @@
         android:label="PopFlix"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Flixer">
+        android:theme="@style/Theme.PopFlix">
         <activity android:name="com.napps.popflix.models.DetailActivity"></activity>
         <activity android:name="com.napps.popflix.MainActivity">
             <intent-filter>
