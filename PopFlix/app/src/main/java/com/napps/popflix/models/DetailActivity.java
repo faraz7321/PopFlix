@@ -19,6 +19,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView MovieTitle;
     TextView MovieOverview;
     RatingBar MovieRating;
+    private static final String YT_KEY = "AIzaSyAZbZhPi_D-y0M9tyl_NDuspAH8srVHhn4";
 
     /**
      *
