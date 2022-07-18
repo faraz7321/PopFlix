@@ -16,3 +16,6 @@ gradle-app.setting
 .idea/
 PopFlix/.idea
 local.properties
+PopFlix/index-files
+PopFlix/com/napps/popflix
+PopFlix/app/.idea
